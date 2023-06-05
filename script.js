@@ -30,13 +30,13 @@ const turret = {
 
 // Robot variables
 const robots = [];
-const robotSpeed = 0.5; // Adjust as needed
-const robotFireInterval = 3500; // Adjust as needed
+const robotSpeed = 0.5; 
+const robotFireInterval = 3500; 
 
 // Projectile variables
 const turretProjectiles = [];
 const robotProjectiles = [];
-let projectileSpeed = 1.2; // Adjust as needed
+let projectileSpeed = 1.2; 
 
 // Event listeners
 document.addEventListener('keydown', handleKeyDown);
@@ -50,37 +50,36 @@ const keys = {
   ArrowRight: false
 };
 
-// Handle key down event
 function handleKeyDown(event) {
   if (event.key in keys) {
     event.preventDefault();
     keys[event.key] = true;
 
-    // Reduce turret projectile frequency and speed when arrow keys are pressed
+    
     if (keys.ArrowUp || keys.ArrowDown || keys.ArrowLeft || keys.ArrowRight) {
       clearInterval(turretProjectileTimer);
-      turretProjectileTimer = setInterval(fireTurretProjectile, 1000); // Adjust frequency as needed
-      projectileSpeed = 2; // Adjust speed as needed
+      turretProjectileTimer = setInterval(fireTurretProjectile, 1000); 
+      projectileSpeed = 2; 
     }
   }
 }
 
-// Handle key up event
+
 function handleKeyUp(event) {
   if (event.key in keys) {
     event.preventDefault();
     keys[event.key] = false;
 
-    // Restore turret projectile frequency and speed when arrow keys are released
+   
     if (!keys.ArrowUp && !keys.ArrowDown && !keys.ArrowLeft && !keys.ArrowRight) {
       clearInterval(turretProjectileTimer);
-      turretProjectileTimer = setInterval(fireTurretProjectile, 750); // Adjust frequency as needed
-      projectileSpeed = 5; // Adjust speed as needed
+      turretProjectileTimer = setInterval(fireTurretProjectile, 750); 
+      projectileSpeed = 5; 
     }
   }
 }
 
-// Move the turret based on arrow key presses
+
 function moveTurret() {
   if (keys.ArrowUp && turret.y > 0) {
     turret.y -= 2;
@@ -96,7 +95,7 @@ function moveTurret() {
   }
 }
 
-// Create and move a robot
+
 function createRobot() {
   const robot = {
     x: Math.random() * (canvas.width - 20),
@@ -357,6 +356,6 @@ function resetGame() {
 
 // Start the game
 let turretProjectileTimer;
-let robotTimer = setInterval(createRobot, 2000); // Adjust robot creation interval as needed
-turretProjectileTimer = setInterval(fireTurretProjectile, 500); // Adjust turret projectile frequency as needed
+let robotTimer = setInterval(createRobot, 2000); 
+turretProjectileTimer = setInterval(fireTurretProjectile, 500);
 update();

@@ -30,8 +30,8 @@ const turret = {
 
 // Robot variables
 const robots = [];
-const robotSpeed = 0.5; 
-const robotFireInterval = 3500; 
+const robotSpeed = 0.2; 
+const robotFireInterval = 5000; 
 
 // Projectile variables
 const turretProjectiles = [];
